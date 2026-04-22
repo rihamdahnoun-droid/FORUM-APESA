@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Forum d'Orientation APESA · 25 Avril</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0c1520;
+  --deep:   #12243a;
+  --mid:    #1b3a5c;
+  --frost:  #a8c8e8;
+  --cream:  #f0ede6;
+  --crimson:#8b1d2e;
+  --rose:   #c94d63;
+  --blush:  #f0a0b0;
+  --gold:   #c8952a;
+  --amber:  #e8b84b;
+  --text:   rgba(240,237,230,0.92);
+  --muted:  rgba(168,200,232,0.6);
+  --border: rgba(168,200,232,0.15);
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 70% at -10% -10%, rgba(139,29,46,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 100% at 110% 110%, rgba(18,36,58,0.9) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(27,58,92,0.5) 0%, transparent 70%),
+    linear-gradient(160deg, #0c1520 0%, #12243a 40%, #0e1e32 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrapper { position: relative; z-index: 1; }
+
+.page { display: none; animation: pageIn 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ── FORM PAGE ── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 52px 24px 60px;
+}
+
+.hero-top { text-align: center; margin-bottom: 44px; }
+
+.logos-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  opacity: 0.45;
+}
+.logo-pill {
+  height: 22px; width: 38px;
+  border-radius: 4px;
+  background: rgba(168,200,232,0.2);
+  border: 1px solid rgba(168,200,232,0.15);
+}
+
+.event-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(200,149,42,0.4);
+  background: rgba(200,149,42,0.08);
+  color: var(--amber);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.event-tag span { width:5px; height:5px; background:var(--amber); border-radius:50%; display:inline-block; }
+
+.main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  color: var(--cream);
+}
+.main-title em { font-style: italic; color: var(--rose); display: block; }
+
+.title-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 28px auto;
+  max-width: 240px;
+  color: rgba(200,149,42,0.35);
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+}
+.ornament::before,.ornament::after {
+  content:'';flex:1;height:1px;
+  background: linear-gradient(90deg, transparent, rgba(200,149,42,0.35));
+}
+.ornament::after { transform: scaleX(-1); }
+
+/* Form card */
+.form-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.form-intro { text-align: center; margin-bottom: 28px; }
+.form-intro h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.form-intro p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.field input {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(168,200,232,0.18);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--cream);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  -webkit-appearance: none;
+}
+.field input::placeholder { color: rgba(168,200,232,0.3); }
+.field input:focus {
+  border-color: var(--rose);
+  background: rgba(201,77,99,0.06);
+  box-shadow: 0 0 0 3px rgba(201,77,99,0.12);
+}
+
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--crimson) 0%, #6b1425 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 28px rgba(139,29,46,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(139,29,46,0.5); }
+.btn-submit:active { transform: translateY(0); }
+
+/* ── RESULT PAGE ── */
+#result-page { padding: 0 20px 80px; }
+
+.result-hero {
+  text-align: center;
+  padding: 56px 20px 36px;
+  position: relative;
+}
+.result-hero::before {
+  content:'';
+  position: absolute;
+  top:0; left:50%; transform: translateX(-50%);
+  width:1px; height:40px;
+  background: linear-gradient(to bottom, transparent, var(--rose));
+}
+
+.confirm-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(201,77,99,0.12);
+  border: 1px solid rgba(201,77,99,0.3);
+  color: var(--blush);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+.confirm-tag::before { content:'✓'; font-size:11px; }
+
+.welcome-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.welcome-title .name-span { color: var(--amber); font-style: italic; }
+.welcome-sub { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+.cards { max-width: 580px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(20px) scale(0.98); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.12s}
+.card:nth-child(3){animation-delay:.19s}
+.card:nth-child(4){animation-delay:.26s}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.card-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.ci-red   { background: rgba(139,29,46,0.3); }
+.ci-gold  { background: rgba(200,149,42,0.2); }
+.ci-green { background: rgba(22,120,80,0.25); }
+
+.card-title-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+.card-title-text small {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+.card-body { padding: 20px; }
+
+/* Timeline */
+.tl-row {
+  display: grid;
+  grid-template-columns: 50px 16px 1fr;
+  gap: 0 8px;
+}
+.tl-time {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--rose);
+  text-align: right;
+  padding-top: 1px;
+  line-height: 1.4;
+}
+.tl-spine { display: flex; flex-direction: column; align-items: center; }
+.tl-node {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--crimson);
+  border: 2px solid var(--ink);
+  box-shadow: 0 0 0 2px rgba(139,29,46,0.4);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.tl-node.final { background: var(--amber); box-shadow: 0 0 0 2px rgba(200,149,42,0.4); }
+.tl-connector {
+  width: 1px; flex: 1; min-height: 12px;
+  background: linear-gradient(to bottom, rgba(139,29,46,0.5), rgba(139,29,46,0.1));
+  margin: 3px 0;
+}
+.tl-content { padding-bottom: 20px; }
+.tl-row:last-child .tl-content { padding-bottom: 0; }
+.tl-label { font-size: 0.88rem; font-weight: 500; color: var(--cream); line-height: 1.3; }
+.tl-label.final { color: var(--amber); }
+.tl-venue { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+.tl-bullets { margin-top: 9px; display: flex; flex-direction: column; gap: 5px; }
+.tl-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: rgba(168,200,232,0.7);
+  line-height: 1.4;
+}
+.tl-bullet::before {
+  content: '›';
+  color: var(--amber);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* Info box */
+.info-block {
+  display: flex;
+  gap: 14px;
+  background: rgba(200,149,42,0.07);
+  border: 1px solid rgba(200,149,42,0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+.info-icon { font-size: 1.4rem; flex-shrink:0; line-height:1; margin-top:1px; }
+.info-text { font-size: 0.85rem; color: var(--text); line-height: 1.65; }
+.info-text strong { color: var(--amber); font-weight: 600; }
+
+/* WhatsApp */
+.wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1fad55, #128c4b);
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(18,140,75,0.35);
+  margin-bottom: 14px;
+}
+.wa-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(18,140,75,0.45); }
+
+.wa-notice {
+  background: rgba(46,92,138,0.15);
+  border: 1px solid rgba(168,200,232,0.15);
+  border-radius: 10px;
+  padding: 13px 15px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.wa-notice strong { color: var(--frost); }
+
+/* Thanks */
+.thanks-inner { text-align: center; padding: 8px 0; }
+.thanks-glyph {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  display: block;
+  animation: floatPulse 3s ease-in-out infinite;
+}
+@keyframes floatPulse {
+  0%,100%{ transform: translateY(0); }
+  50%    { transform: translateY(-5px); }
+}
+.thanks-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.thanks-rule {
+  width: 48px; height: 2px;
+  background: linear-gradient(90deg, var(--crimson), var(--amber));
+  border-radius: 2px;
+  margin: 12px auto;
+}
+.thanks-body {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.thanks-sig {
+  margin-top: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(200,149,42,0.8);
+}
+
+@media(max-width:400px){
+  .hero{ padding:44px 18px 52px; }
+  .form-card{ padding:28px 20px; }
+  .card-body{ padding:16px; }
+  .card-header{ padding:16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- PAGE 1 · FORMULAIRE -->
+<div id="form-page" class="page active">
+  <div class="hero">
+    <div class="hero-top">
+      <div class="logos-row">
+        <div class="logo-pill"></div><div class="logo-pill"></div>
+        <div class="logo-pill"></div><div class="logo-pill"></div>
+        <div class="logo-pill"></div><div class="logo-pill"></div>
+        <div class="logo-pill"></div>
+      </div>
+      <div class="event-tag"><span></span>Samedi 25 Avril<span></span></div>
+      <h1 class="main-title">Forum<em>d'Orientation</em></h1>
+      <div class="title-sub">APESA · Porte APESA</div>
+      <div class="ornament">✦ ✦ ✦</div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-intro">
+        <h3>Bienvenue, bachelier·ère</h3>
+        <p>Inscrivez-vous pour accéder au programme complet et aux informations de la journée.</p>
+      </div>
+
+      <div class="field">
+        <label>Nom complet</label>
+        <input type="text" id="fullname" placeholder="Ex : Youssef El Amrani" autocomplete="name" inputmode="text">
+      </div>
+      <div class="field">
+        <label>Adresse e-mail</label>
+        <input type="email" id="email" placeholder="exemple@email.com" autocomplete="email" inputmode="email">
+      </div>
+
+      <button class="btn-submit" onclick="handleSubmit()">
+        Accéder au programme
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 · RÉSULTAT -->
+<div id="result-page" class="page">
+
+  <div class="result-hero">
+    <div class="confirm-tag">Inscription confirmée</div>
+    <h2 class="welcome-title">Bienvenue,<br><span class="name-span" id="display-name">ami·e</span> !</h2>
+    <p class="welcome-sub">Voici tout ce qu'il faut savoir pour votre journée du 25 Avril.</p>
+  </div>
+
+  <div class="cards">
+
+    <!-- ① Programme -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ci-red">📋</div>
+        <div class="card-title-text">Programme du Forum<small>Samedi 25 Avril · Porte APESA</small></div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="tl-row">
+            <div class="tl-time">13:00</div>
+            <div class="tl-spine"><div class="tl-node"></div><div class="tl-connector"></div></div>
+            <div class="tl-content">
+              <div class="tl-label">Accueil des participants</div>
+              <div class="tl-venue">📍 Porte APESA</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">13:30</div>
+            <div class="tl-spine"><div class="tl-node"></div><div class="tl-connector"></div></div>
+            <div class="tl-content">
+              <div class="tl-label">Ouverture de la Conférence</div>
+              <div class="tl-venue">📍 Amphithéâtre APESA</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">15:00</div>
+            <div class="tl-spine"><div class="tl-node"></div><div class="tl-connector"></div></div>
+            <div class="tl-content">
+              <div class="tl-label">Début des activités du Forum</div>
+              <div class="tl-bullets">
+                <div class="tl-bullet">Lancement de la tombola</div>
+                <div class="tl-bullet">Visite des stands des écoles participantes</div>
+                <div class="tl-bullet">Simulation de concours APESA (Écrit / Oral)</div>
+                <div class="tl-bullet">Découverte guidée du campus</div>
+                <div class="tl-bullet">Autres activités</div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">18:00</div>
+            <div class="tl-spine"><div class="tl-node final"></div></div>
+            <div class="tl-content">
+              <div class="tl-label final">Clôture du Forum</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② Groupes -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ci-gold">👥</div>
+        <div class="card-title-text">Organisation en groupes<small>Pour faciliter votre visite</small></div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-icon">ℹ️</div>
+          <div class="info-text">
+            Afin de garantir la <strong>meilleure expérience possible</strong>, les bacheliers seront <strong>répartis en groupes</strong>. Chaque groupe sera pris en charge par un parrain dédié qui vous accompagnera tout au long de la journée.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ WhatsApp -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon ci-green">💬</div>
+        <div class="card-title-text">Rejoindre votre groupe WhatsApp<small>Lien d'intégration</small></div>
+      </div>
+      <div class="card-body">
+        <a class="wa-btn" href="https://chat.whatsapp.com/H1KfSK3uqNzCge1zrILhTs" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          Rejoindre un groupe WhatsApp
+        </a>
+        <div class="wa-notice">
+          📌 <strong>Important :</strong> Rejoignez uniquement le groupe que vous a transmis votre <strong>parrain</strong>. Chaque participant doit intégrer le groupe correspondant à sa session pour bénéficier d'un encadrement optimal durant la visite.
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ Merci -->
+    <div class="card">
+      <div class="card-body">
+        <div class="thanks-inner">
+          <span class="thanks-glyph">🎓</span>
+          <div class="thanks-title">Merci pour votre présence !</div>
+          <div class="thanks-rule"></div>
+          <p class="thanks-body">Nous sommes honorés de vous accueillir au Forum d'Orientation APESA. Cette journée a été conçue pour vous aider à explorer votre avenir académique et professionnel. Profitez pleinement de chaque moment !</p>
+          <div class="thanks-sig">— L'équipe APESA 🌟</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+function handleSubmit() {
+  const name  = document.getElementById('fullname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!name)  { shake('fullname'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { shake('email'); return; }
+
+  document.getElementById('display-name').textContent = name.split(' ')[0];
+
+  const fp = document.getElementById('form-page');
+  fp.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+  fp.style.opacity = '0';
+  fp.style.transform = 'translateY(-16px)';
+
+  setTimeout(() => {
+    fp.classList.remove('active');
+    document.getElementById('result-page').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 350);
+}
+
+function shake(id) {
+  const el = document.getElementById(id);
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = 'shake 0.4s ease';
+  el.focus();
+}
+
+const s = document.createElement('style');
+s.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}`;
+document.head.appendChild(s);
+</script>
+</body>
+</html>
